@@ -44,5 +44,5 @@ print(bmi.data.message);
 ```
 
 ## Additional information
-Support this package by star it .
+Support this package by star it :heart_on_fire:
 
