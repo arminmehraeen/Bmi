@@ -36,11 +36,11 @@ import 'package:bmi/bmi.dart';
 
 ```dart
 final bmi = BMI(weight: 70, height: 180) ;
-print(bmi.data.bmi);
-print(bmi.data.weight);
-print(bmi.data.height);
-print(bmi.data.status);
-print(bmi.data.message);
+bmi.data.bmi;
+bmi.data.weight;
+bmi.data.height;
+bmi.data.status;
+bmi.data.message;
 ```
 
 ## Additional information
