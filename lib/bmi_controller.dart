@@ -4,11 +4,12 @@ class BmiController {
   BmiModel _model = BmiModel.empty;
 
   void compute({required double height, required double weight}) {
-    double bmi = (weight.toInt() / pow(height, 2).toInt()) * 10000;
-    List detail = _computeDetail(bmi: bmi);
-    _model = BmiModel(weight: weight,
+    double value = (weight.toInt() / pow(height, 2).toInt()) * 10000;
+    List detail = _computeDetail(bmi: value);
+    _model = BmiModel(
+        weight: weight,
         height: height,
-        bmi: bmi,
+        value: value,
         status: detail[0],
         message: detail[1]);
   }

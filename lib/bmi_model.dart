@@ -5,7 +5,7 @@ part of bmi;
 class BmiModel {
   final double weight;
   final double height;
-  final double bmi;
+  final double value;
 
   final String status;
   final String message;
@@ -13,7 +13,7 @@ class BmiModel {
   const BmiModel({
     required this.weight,
     required this.height,
-    required this.bmi,
+    required this.value,
     required this.status,
     required this.message,
   });
@@ -21,7 +21,7 @@ class BmiModel {
   static BmiModel get empty =>  BmiModel(
       weight: 0.0,
       height: 0.0,
-      bmi: 0.0,
+      value: 0.0,
       status: bmiStatus.first ,
       message: bmiMessage.first );
 
@@ -32,7 +32,7 @@ class BmiModel {
           runtimeType == other.runtimeType &&
           weight == other.weight &&
           height == other.height &&
-          bmi == other.bmi &&
+          value == other.value &&
           status == other.status &&
           message == other.message);
 
@@ -40,26 +40,26 @@ class BmiModel {
   int get hashCode =>
       weight.hashCode ^
       height.hashCode ^
-      bmi.hashCode ^
+      value.hashCode ^
       status.hashCode ^
       message.hashCode;
 
   @override
   String toString() {
-    return 'BmiModel{ weight: $weight, height: $height, bmi: $bmi, status: $status, message: $message,}';
+    return 'BmiModel{ weight: $weight, height: $height, value: $value, status: $status, message: $message,}';
   }
 
   BmiModel copyWith({
     double? weight,
     double? height,
-    double? bmi,
+    double? value,
     String? status,
     String? message,
   }) {
     return BmiModel(
       weight: weight ?? this.weight,
       height: height ?? this.height,
-      bmi: bmi ?? this.bmi,
+      value: value ?? this.value,
       status: status ?? this.status,
       message: message ?? this.message,
     );
@@ -69,7 +69,7 @@ class BmiModel {
     return {
       'weight': weight,
       'height': height,
-      'bmi': bmi,
+      'value': value,
       'status': status,
       'message': message,
     };
@@ -79,7 +79,7 @@ class BmiModel {
     return BmiModel(
       weight: map['weight'] as double,
       height: map['height'] as double,
-      bmi: map['bmi'] as double,
+      value: map['value'] as double,
       status: map['status'] as String,
       message: map['message'] as String,
     );
