@@ -1,4 +1,7 @@
-part of bmi;
+import 'dart:math';
+
+import 'bmi_model.dart';
+import 'constants.dart';
 
 class BmiController {
   BmiModel _model = BmiModel.empty;
@@ -15,8 +18,8 @@ class BmiController {
   }
 
   List _computeDetail({required double bmi}) {
-    int index = _bmiRangeSelector(bmi: bmi) ;
-    return [bmiStatus[index] , bmiMessage[index] ] ;
+    int index = _bmiRangeSelector(bmi: bmi);
+    return [bmiStatus[index], bmiMessage[index]];
   }
 
   int _bmiRangeSelector({required double bmi}) {

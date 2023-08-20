@@ -1,6 +1,4 @@
-part of bmi;
-
-
+import 'constants.dart';
 
 class BmiModel {
   final double weight;
@@ -18,12 +16,12 @@ class BmiModel {
     required this.message,
   });
 
-  static BmiModel get empty =>  BmiModel(
+  static BmiModel get empty => BmiModel(
       weight: 0.0,
       height: 0.0,
       value: 0.0,
-      status: bmiStatus.first ,
-      message: bmiMessage.first );
+      status: bmiStatus.first,
+      message: bmiMessage.first);
 
   @override
   bool operator ==(Object other) =>
