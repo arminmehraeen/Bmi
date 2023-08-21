@@ -21,9 +21,18 @@ Calculate BMI based on the height and weight that you provided
 
 This will add a line like this to your package's pubspec.yaml ( run an implicit dart pub get ) :
 
+install from pub.dev
+
 ```dart
 dependencies:
-  bmi:
+  advanced_bmi: ^0.0.1
+```
+
+install from github
+
+```dart
+dependencies:
+  advanced_bmi:
     git:
       url: https://github.com/arminmehraeen/Bmi.git
 ```
