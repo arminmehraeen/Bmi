@@ -1,9 +1,9 @@
-import 'package:bmi/src/bmi_model.dart';
-import 'package:bmi/src/main.dart';
+import 'package:advanced_bmi/advanced_bmi.dart';
+import 'package:advanced_bmi/src/bmi_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  test('test', () {
+  test('package test', () {
     BmiModel bmi = BMI(height: 180, weight: 70).data;
     expect(bmi.height, 180.0);
     expect(bmi.weight, 70.0);

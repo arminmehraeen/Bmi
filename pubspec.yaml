@@ -1,10 +1,10 @@
-name: bmi
-description: Body Mass Index ( BMI ) Package
+name: advanced_bmi
+description: Advanced body mass index ( BMI ) calculator flutter package
 version: 0.0.1
 homepage: https://github.com/arminmehraeen/Bmi
 
 environment:
-  sdk: ">=2.17.6 <3.0.0"
+  sdk: '>=2.18.6 <3.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
@@ -15,8 +15,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  intl: ^0.17.0
 
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
 flutter:
 
   # To add assets to your package, add an assets section, like this:
@@ -46,3 +49,6 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+  #
+  # For details regarding fonts in packages, see
+  # https://flutter.dev/custom-fonts/#from-packages

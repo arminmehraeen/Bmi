@@ -1,3 +1,3 @@
 ## 0.0.1
 
-Body Mass Index ( BMI ) Flutter Package
+Advanced body mass index ( BMI ) calculator flutter package 

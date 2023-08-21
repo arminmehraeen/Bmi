@@ -11,11 +11,11 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-Body Mass Index ( BMI ) Flutter Package .
+Advanced body mass index ( BMI ) calculator flutter package 
 
 ## Features
 
-Calculate BMI based on the height and weight that you provided .
+Calculate BMI based on the height and weight that you provided 
 
 ## Getting started
 
