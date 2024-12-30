@@ -1,12 +1,19 @@
+// Entry point for the advanced BMI calculator program.
 import 'bmi_controller.dart';
-import 'bmi_model.dart';
 
-class BMI {
-  final BmiController _controller = BmiController();
+void main() {
+  // Initialize the BMI controller.
+  AdvancedBmiController controller = AdvancedBmiController();
 
-  BMI({required double weight, required double height}) {
-    _controller.compute(height: height, weight: weight);
-  }
+  // Example inputs for the calculation.
+  final result = controller.calculate(
+    weight: 70.0,               // Weight in kilograms.
+    height: 175.0,              // Height in centimeters.
+    age: 30,                    // Age in years.
+    gender: "male",             // Gender: 'male' or 'female'.
+    activityLevel: "moderately active", // Activity level.
+  );
 
-  BmiModel get data => _controller.data;
+  // Print the detailed result.
+  print(result);
 }

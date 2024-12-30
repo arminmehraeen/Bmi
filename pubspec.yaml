@@ -1,6 +1,6 @@
 name: advanced_bmi
 description: Advanced body mass index ( BMI ) calculator flutter package
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/arminmehraeen/Bmi
 
 environment:

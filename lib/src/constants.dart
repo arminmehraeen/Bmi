@@ -1,15 +1,26 @@
-List<String> bmiStatus = [
-  "UnderWeight",
-  "Normal",
-  "OverWeight",
-  "Fat",
-  "VeryFat",
-];
+// This file defines constants for BMI ranges and activity multipliers.
+// The constants are tailored to provide more personalized results.
 
-List<String> bmiMessage = [
-  "A person should talk to a doctor about his low weight and if there is no specific problem, increase his weight to the ideal range with the help of a nutritionist.",
-  "Not only is there nothing to worry about, but the ideal point is right here. This person can maintain his weight in this range by maintaining a healthy diet and lifestyle and exercise and have his relative health.",
-  "You should see a specialist doctor and start treatment for your excess weight in the form of medication, diet, etc. In this range, a person can lose weight much more easily than the next two stages by following the doctor's recommendations without the need for weight loss surgery.",
-  "This person is considered obese and should go to the doctor and start his treatment in the way prescribed by the doctor. From this BMI range onwards, concerns about health risks begin and need to be investigated.",
-  "This person has excessive obesity and is in a dangerous stage. This person is probably someone who has not been able to lose weight before with the help of diet, medicine and exercise. Usually, the treatment of these patients is in the form of slimming surgeries."
-];
+/// BMI ranges based on age and gender.
+const Map<String, Map<String, List<double>>> bmiRanges = {
+  "male": {
+    "child": [14.5, 18.5],  // Underweight and Overweight ranges for male children.
+    "adult": [18.5, 24.9],  // Underweight and Overweight ranges for male adults.
+    "elderly": [23.0, 29.9] // Underweight and Overweight ranges for elderly males.
+  },
+  "female": {
+    "child": [14.0, 18.0],  // Underweight and Overweight ranges for female children.
+    "adult": [18.0, 24.4],  // Underweight and Overweight ranges for female adults.
+    "elderly": [22.5, 29.5] // Underweight and Overweight ranges for elderly females.
+  }
+};
+
+/// Activity levels and their respective calorie multipliers.
+/// These multipliers adjust the calorie needs based on activity levels.
+const Map<String, double> activityMultipliers = {
+  "sedentary": 1.2,             // Little to no exercise.
+  "lightly active": 1.375,      // Light exercise/sports 1-3 days/week.
+  "moderately active": 1.55,    // Moderate exercise/sports 3-5 days/week.
+  "very active": 1.725,         // Hard exercise/sports 6-7 days/week.
+  "extra active": 1.9           // Very hard exercise and physical job.
+};

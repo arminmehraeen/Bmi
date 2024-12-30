@@ -1,57 +1,84 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Advanced Body Mass Index (BMI) Calculator Flutter Package
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-Advanced body mass index ( BMI ) calculator flutter package 
+This package provides an advanced BMI calculator that calculates not only the BMI but also suggests daily calorie intake based on activity level, computes Basal Metabolic Rate (BMR), and categorizes users based on age.
 
 ## Features
 
-Calculate BMI based on the height and weight that you provided 
+- **BMI Calculation**: Calculate BMI based on the provided height and weight.
+- **BMR Calculation**: Basal Metabolic Rate (BMR) calculation based on gender, weight, height, and age.
+- **Calorie Suggestions**: Daily calorie intake suggestions based on activity level (sedentary, lightly active, etc.).
+- **Age Category**: Categorize users as child, adult, or elderly for more accurate health information.
+- **Status and Message**: Get the BMI status (e.g., Underweight, Normal, Overweight) and an informative message.
 
-## Getting started
+## Getting Started
 
-This will add a line like this to your package's pubspec.yaml ( run an implicit dart pub get ) :
+### Install from pub.dev
 
-install from pub.dev
+To add this package to your Flutter project, include it in your `pubspec.yaml`:
 
-```dart
+```yaml
 dependencies:
-  advanced_bmi: ^0.0.1
+  advanced_bmi: ^0.0.2
 ```
 
-install from github
+Then, run `flutter pub get` to install the package.
 
-```dart
+### Install from GitHub
+
+If you'd like to install the package directly from GitHub, use this configuration in your `pubspec.yaml`:
+
+```yaml
 dependencies:
   advanced_bmi:
     git:
       url: https://github.com/arminmehraeen/Bmi.git
 ```
 
+### Import the Package
+
+To use the package, import it as follows:
+
 ```dart
-import 'package:bmi/bmi.dart';
+import 'package:advanced_bmi/advanced_bmi.dart';
 ```
 
 ## Usage
 
+Here's an example of how to use the BMI and advanced features in your Flutter app:
+
 ```dart
-BmiModel bmi = BMI(weight: 70, height: 180).data ;
-bmi.value   ;
-bmi.weight  ;
-bmi.height  ;
-bmi.status  ;
-bmi.message ;
+import 'package:advanced_bmi/advanced_bmi.dart';
+
+void main() {
+  AdvancedBmiController controller = AdvancedBmiController();
+  
+  // Calculate BMI, BMR, and calorie suggestions for a user
+  AdvancedBmiModel bmiModel = controller.calculate(
+    weight: 70,       // Weight in kilograms
+    height: 180,      // Height in centimeters
+    age: 25,          // Age in years
+    gender: 'male',   // Gender (either 'male' or 'female')
+    activityLevel: 'lightly_active',  // Activity level
+  );
+
+  // Access the calculated values
+  print('BMI: ${bmiModel.bmi}');
+  print('Status: ${bmiModel.status}');
+  print('Category: ${bmiModel.category}');
+  print('BMR: ${bmiModel.bmr}');
+  print('Suggested Calories: ${bmiModel.calorieSuggestions['maintenance']}');
+}
 ```
 
-## Additional information
-Support this package by star it :heart_on_fire:
+### Available Data
 
+- `bmiModel.bmi`: The BMI value.
+- `bmiModel.status`: The BMI status (e.g., "Underweight", "Normal", "Overweight").
+- `bmiModel.category`: The user's age category (e.g., "child", "adult", "elderly").
+- `bmiModel.bmr`: The Basal Metabolic Rate (BMR).
+- `bmiModel.calorieSuggestions`: A map with daily calorie suggestions for maintenance, mild weight loss, and aggressive weight loss.
+
+## Additional Information
+
+Support this package by starring it on [GitHub](https://github.com/arminmehraeen/Bmi) :heart_on_fire:
+```
