@@ -31,52 +31,64 @@ void main() {
     expect(model.status, 'Normal');
 
     // Test BMR calculation (Harris-Benedict formula for male)
-    final expectedBmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+    final expectedBmr =
+        88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
     expect(model.bmr, closeTo(expectedBmr, 1.0));
 
     // Test calorie suggestions
     final expectedCalories = expectedBmr * activityMultipliers[activityLevel]!;
-    expect(model.calorieSuggestions['maintenance'], closeTo(expectedCalories, 50.0));
-    expect(model.calorieSuggestions['mild_weight_loss'], closeTo(expectedCalories - 250, 50.0));
-    expect(model.calorieSuggestions['aggressive_weight_loss'], closeTo(expectedCalories - 500, 50.0));
+    expect(model.calorieSuggestions['maintenance'],
+        closeTo(expectedCalories, 50.0));
+    expect(model.calorieSuggestions['mild_weight_loss'],
+        closeTo(expectedCalories - 250, 50.0));
+    expect(model.calorieSuggestions['aggressive_weight_loss'],
+        closeTo(expectedCalories - 500, 50.0));
   });
 
   test('Calculate BMI with invalid inputs', () {
     // Test invalid inputs (negative weight, zero height)
-    expect(() => controller.calculate(
-      weight: -70.0,
-      height: 175.0,
-      age: 25,
-      gender: 'male',
-      activityLevel: 'lightly_active',
-    ), throwsArgumentError);
+    expect(
+        () => controller.calculate(
+              weight: -70.0,
+              height: 175.0,
+              age: 25,
+              gender: 'male',
+              activityLevel: 'lightly_active',
+            ),
+        throwsArgumentError);
 
-    expect(() => controller.calculate(
-      weight: 70.0,
-      height: 0.0,
-      age: 25,
-      gender: 'male',
-      activityLevel: 'lightly_active',
-    ), throwsArgumentError);
+    expect(
+        () => controller.calculate(
+              weight: 70.0,
+              height: 0.0,
+              age: 25,
+              gender: 'male',
+              activityLevel: 'lightly_active',
+            ),
+        throwsArgumentError);
 
-    expect(() => controller.calculate(
-      weight: 70.0,
-      height: 175.0,
-      age: 0,
-      gender: 'male',
-      activityLevel: 'lightly_active',
-    ), throwsArgumentError);
+    expect(
+        () => controller.calculate(
+              weight: 70.0,
+              height: 175.0,
+              age: 0,
+              gender: 'male',
+              activityLevel: 'lightly_active',
+            ),
+        throwsArgumentError);
   });
 
   test('Calculate BMI with invalid gender input', () {
     // Test invalid gender input
-    expect(() => controller.calculate(
-      weight: 70.0,
-      height: 175.0,
-      age: 25,
-      gender: 'other', // Invalid gender
-      activityLevel: 'lightly_active',
-    ), throwsArgumentError);
+    expect(
+        () => controller.calculate(
+              weight: 70.0,
+              height: 175.0,
+              age: 25,
+              gender: 'other', // Invalid gender
+              activityLevel: 'lightly_active',
+            ),
+        throwsArgumentError);
   });
 
   test('Calculate BMI for female category', () {

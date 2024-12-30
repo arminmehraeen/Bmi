@@ -1,6 +1,6 @@
 name: advanced_bmi
-description: Advanced body mass index ( BMI ) calculator flutter package
-version: 0.0.2
+description: This package provides an advanced BMI calculator that calculates not only the BMI but also suggests daily calorie intake based on activity level, computes Basal Metabolic Rate (BMR), and categorizes users based on age.
+version: 0.0.3
 homepage: https://github.com/arminmehraeen/Bmi
 
 environment:

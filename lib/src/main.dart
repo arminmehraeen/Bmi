@@ -7,10 +7,10 @@ void main() {
 
   // Example inputs for the calculation.
   final result = controller.calculate(
-    weight: 70.0,               // Weight in kilograms.
-    height: 175.0,              // Height in centimeters.
-    age: 30,                    // Age in years.
-    gender: "male",             // Gender: 'male' or 'female'.
+    weight: 70.0, // Weight in kilograms.
+    height: 175.0, // Height in centimeters.
+    age: 30, // Age in years.
+    gender: "male", // Gender: 'male' or 'female'.
     activityLevel: "moderately active", // Activity level.
   );
 

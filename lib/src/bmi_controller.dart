@@ -8,11 +8,12 @@ class AdvancedBmiController {
 
   /// Calculates BMI, BMR, and calorie suggestions based on input data.
   AdvancedBmiModel calculate({
-    required double weight,        // Weight in kilograms.
-    required double height,        // Height in centimeters.
-    required int age,              // Age in years.
-    required String gender,        // Gender: 'male' or 'female'.
-    required String activityLevel, // Activity level: 'sedentary', 'lightly active', etc.
+    required double weight, // Weight in kilograms.
+    required double height, // Height in centimeters.
+    required int age, // Age in years.
+    required String gender, // Gender: 'male' or 'female'.
+    required String
+        activityLevel, // Activity level: 'sedentary', 'lightly active', etc.
   }) {
     // Validate inputs
     if (weight <= 0 || height <= 0 || age <= 0) {
@@ -32,7 +33,8 @@ class AdvancedBmiController {
     double bmr = _calculateBmr(weight, height, age, gender);
 
     // Suggest daily calorie intake based on activity level.
-    Map<String, double> calorieSuggestions = _suggestCalories(bmr, activityLevel);
+    Map<String, double> calorieSuggestions =
+        _suggestCalories(bmr, activityLevel);
 
     // Create an AdvancedBmiModel instance with all calculated data.
     _model = AdvancedBmiModel(

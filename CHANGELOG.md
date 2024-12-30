@@ -21,3 +21,6 @@ Advanced body mass index ( BMI ) calculator flutter package
 
 ### Removed:
 - No removals in this version.
+
+## [0.0.1]
+Fix some problems
