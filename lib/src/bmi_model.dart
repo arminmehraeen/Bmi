@@ -10,7 +10,7 @@ class AdvancedBmiModel {
   final String category; // Age category (child, adult, elderly).
   final double bmr; // Basal Metabolic Rate (calories needed at rest).
   final Map<String, double>
-      calorieSuggestions; // Suggested calorie intake based on activity levels.
+  calorieSuggestions; // Suggested calorie intake based on activity levels.
 
   const AdvancedBmiModel({
     required this.weight,
@@ -36,3 +36,56 @@ AdvancedBmiModel(
 )''';
   }
 }
+
+class BmiResult {
+  final double bmi;
+  final String category;
+  final double bmr;
+  final double dailyCalories;
+  final double bodyFatPercentage;
+  final double idealWeightMin;
+  final double idealWeightMax;
+  final double waistToHeightRatio;
+  final String waistToHeightCategory;
+  final Map<String, dynamic> recommendations;
+
+  BmiResult({
+    required this.bmi,
+    required this.category,
+    required this.bmr,
+    required this.dailyCalories,
+    required this.bodyFatPercentage,
+    required this.idealWeightMin,
+    required this.idealWeightMax,
+    required this.waistToHeightRatio,
+    required this.waistToHeightCategory,
+    required this.recommendations,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'bmi': bmi,
+      'category': category,
+      'bmr': bmr,
+      'dailyCalories': dailyCalories,
+      'bodyFatPercentage': bodyFatPercentage,
+      'idealWeightMin': idealWeightMin,
+      'idealWeightMax': idealWeightMax,
+      'waistToHeightRatio': waistToHeightRatio,
+      'waistToHeightCategory': waistToHeightCategory,
+      'recommendations': recommendations,
+    };
+  }
+}
+
+enum MeasurementSystem { metric, imperial }
+
+enum ActivityLevel {
+  sedentary,
+  lightlyActive,
+  moderatelyActive,
+  veryActive,
+  extraActive,
+}
+
+enum Gender { male, female }

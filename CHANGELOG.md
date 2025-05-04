@@ -1,5 +1,37 @@
 # Changelog
 
+## [1.0.0] - 2024-03-21
+
+### Added
+- Body fat percentage calculation using the Deurenberg formula
+- Ideal weight range calculation
+- Waist-to-height ratio analysis
+- Support for both metric and imperial measurement systems
+- Enhanced activity level categories
+- Comprehensive health recommendations
+- Improved error handling
+- Better type safety with enums
+- Detailed documentation
+
+### Changed
+- Improved BMI categorization with more detailed classes
+- Enhanced BMR calculation accuracy
+- Better code organization and structure
+- Updated documentation and examples
+
+### Fixed
+- Fixed potential calculation errors
+- Improved input validation
+- Enhanced error messages
+
+## [0.0.3] - 2023-05-04
+
+### Added
+- Initial release with basic BMI calculation
+- BMR calculation
+- Calorie suggestions
+- Age-based categorization
+
 ## [0.0.1]
 Advanced body mass index ( BMI ) calculator flutter package 
 
@@ -21,6 +53,3 @@ Advanced body mass index ( BMI ) calculator flutter package
 
 ### Removed:
 - No removals in this version.
-
-## [0.0.3]
-Fix some problems

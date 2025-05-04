@@ -1,84 +1,186 @@
-# Advanced Body Mass Index (BMI) Calculator Flutter Package
+# Advanced BMI Calculator
 
-This package provides an advanced BMI calculator that calculates not only the BMI but also suggests daily calorie intake based on activity level, computes Basal Metabolic Rate (BMR), and categorizes users based on age.
+A comprehensive BMI calculator package that provides detailed health metrics, personalized recommendations, and supports both metric and imperial measurement systems.
 
 ## Features
 
-- **BMI Calculation**: Calculate BMI based on the provided height and weight.
-- **BMR Calculation**: Basal Metabolic Rate (BMR) calculation based on gender, weight, height, and age.
-- **Calorie Suggestions**: Daily calorie intake suggestions based on activity level (sedentary, lightly active, etc.).
-- **Age Category**: Categorize users as child, adult, or elderly for more accurate health information.
-- **Status and Message**: Get the BMI status (e.g., Underweight, Normal, Overweight) and an informative message.
+- Calculate BMI with detailed categorization
+- Estimate Basal Metabolic Rate (BMR)
+- Calculate daily calorie needs based on activity level
+- Estimate body fat percentage
+- Calculate ideal weight range
+- Calculate waist-to-height ratio
+- Generate personalized health recommendations
+- Support for both metric and imperial measurement systems
 
-## Getting Started
+## Installation
 
-### Install from pub.dev
-
-To add this package to your Flutter project, include it in your `pubspec.yaml`:
-
-```yaml
-dependencies:
-  advanced_bmi: ^0.0.2
-```
-
-Then, run `flutter pub get` to install the package.
-
-### Install from GitHub
-
-If you'd like to install the package directly from GitHub, use this configuration in your `pubspec.yaml`:
+Add the package to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  advanced_bmi:
-    git:
-      url: https://github.com/arminmehraeen/Bmi.git
+  advanced_bmi: ^1.0.0
 ```
 
-### Import the Package
-
-To use the package, import it as follows:
-
-```dart
-import 'package:advanced_bmi/advanced_bmi.dart';
+Then run:
+```bash
+dart pub get
 ```
 
 ## Usage
 
-Here's an example of how to use the BMI and advanced features in your Flutter app:
+### Basic Usage
 
 ```dart
 import 'package:advanced_bmi/advanced_bmi.dart';
 
 void main() {
-  AdvancedBmiController controller = AdvancedBmiController();
+  final controller = AdvancedBmiController();
   
-  // Calculate BMI, BMR, and calorie suggestions for a user
-  AdvancedBmiModel bmiModel = controller.calculate(
-    weight: 70,       // Weight in kilograms
-    height: 180,      // Height in centimeters
-    age: 25,          // Age in years
-    gender: 'male',   // Gender (either 'male' or 'female')
-    activityLevel: 'lightly_active',  // Activity level
+  final result = controller.calculate(
+    weight: 70.0, // Weight in kilograms
+    height: 175.0, // Height in centimeters
+    age: 25,
+    gender: 'male',
+    activityLevel: ActivityLevel.moderatelyActive.toString().split('.').last,
+    waistCircumference: 80.0, // Waist circumference in centimeters
+    measurementSystem: MeasurementSystem.metric,
   );
 
-  // Access the calculated values
-  print('BMI: ${bmiModel.bmi}');
-  print('Status: ${bmiModel.status}');
-  print('Category: ${bmiModel.category}');
-  print('BMR: ${bmiModel.bmr}');
-  print('Suggested Calories: ${bmiModel.calorieSuggestions['maintenance']}');
+  print('BMI: ${result.bmi.toStringAsFixed(2)}');
+  print('Category: ${result.category}');
+  print('BMR: ${result.bmr.toStringAsFixed(2)} calories/day');
+  print('Daily Calories: ${result.dailyCalories.toStringAsFixed(2)} calories');
+  print('Body Fat Percentage: ${result.bodyFatPercentage.toStringAsFixed(2)}%');
+  print('Ideal Weight Range: ${result.idealWeightMin.toStringAsFixed(2)} - ${result.idealWeightMax.toStringAsFixed(2)} kg');
+  print('Waist-to-Height Ratio: ${result.waistToHeightRatio.toStringAsFixed(2)}');
+  print('Waist-to-Height Category: ${result.waistToHeightCategory}');
+  print('\nRecommendations:');
+  print('BMI: ${result.recommendations['bmi']['suggestion']}');
+  print('Body Fat: ${result.recommendations['bodyFat']['suggestion']}');
+  print('Waist-to-Height: ${result.recommendations['waistToHeight']['suggestion']}');
 }
 ```
 
-### Available Data
+### Using Imperial Measurements
 
-- `bmiModel.bmi`: The BMI value.
-- `bmiModel.status`: The BMI status (e.g., "Underweight", "Normal", "Overweight").
-- `bmiModel.category`: The user's age category (e.g., "child", "adult", "elderly").
-- `bmiModel.bmr`: The Basal Metabolic Rate (BMR).
-- `bmiModel.calorieSuggestions`: A map with daily calorie suggestions for maintenance, mild weight loss, and aggressive weight loss.
+```dart
+final result = controller.calculate(
+  weight: 154.0, // Weight in pounds
+  height: 68.9,  // Height in inches
+  age: 25,
+  gender: 'male',
+  activityLevel: ActivityLevel.moderatelyActive.toString().split('.').last,
+  waistCircumference: 31.5, // Waist circumference in inches
+  measurementSystem: MeasurementSystem.imperial,
+);
+```
 
-## Additional Information
+## API Reference
 
-Support this package by starring it on [GitHub](https://github.com/arminmehraeen/Bmi) :heart_on_fire:
+### AdvancedBmiController
+
+The main controller class for BMI calculations.
+
+#### Methods
+
+##### calculate
+
+```dart
+BmiResult calculate({
+  required double weight,
+  required double height,
+  required int age,
+  required String gender,
+  required String activityLevel,
+  double? waistCircumference,
+  MeasurementSystem measurementSystem = MeasurementSystem.metric,
+})
+```
+
+Calculates comprehensive health metrics based on user inputs.
+
+**Parameters:**
+- `weight`: Weight in kilograms (metric) or pounds (imperial)
+- `height`: Height in centimeters (metric) or inches (imperial)
+- `age`: Age in years
+- `gender`: 'male' or 'female'
+- `activityLevel`: One of: 'sedentary', 'lightlyActive', 'moderatelyActive', 'veryActive', 'extraActive'
+- `waistCircumference`: Waist circumference in centimeters (metric) or inches (imperial)
+- `measurementSystem`: Either `MeasurementSystem.metric` or `MeasurementSystem.imperial`
+
+**Returns:**
+A `BmiResult` object containing all calculated metrics and recommendations.
+
+### BmiResult
+
+Contains the results of BMI calculations and health metrics.
+
+**Properties:**
+- `bmi`: Calculated BMI value
+- `category`: BMI category (e.g., 'Normal weight', 'Overweight')
+- `bmr`: Basal Metabolic Rate in calories per day
+- `dailyCalories`: Estimated daily calorie needs based on activity level
+- `bodyFatPercentage`: Estimated body fat percentage
+- `idealWeightMin`: Minimum ideal weight in kilograms
+- `idealWeightMax`: Maximum ideal weight in kilograms
+- `waistToHeightRatio`: Waist-to-height ratio
+- `waistToHeightCategory`: Waist-to-height category
+- `recommendations`: Personalized health recommendations
+
+### ActivityLevel
+
+Enum representing different activity levels:
+- `sedentary`: Little to no exercise
+- `lightlyActive`: Light exercise/sports 1-3 days/week
+- `moderatelyActive`: Moderate exercise/sports 3-5 days/week
+- `veryActive`: Hard exercise/sports 6-7 days/week
+- `extraActive`: Very hard exercise and physical job
+
+### MeasurementSystem
+
+Enum representing measurement systems:
+- `metric`: Uses kilograms, centimeters
+- `imperial`: Uses pounds, inches
+
+## BMI Categories
+
+- Underweight: < 18.5
+- Normal weight: 18.5 - 24.9
+- Overweight: 25 - 29.9
+- Obesity class I: 30 - 34.9
+- Obesity class II: 35 - 39.9
+- Obesity class III: ≥ 40
+
+## Waist-to-Height Ratio Categories
+
+- Very Slim: < 0.35
+- Slim: 0.35 - 0.45
+- Healthy: 0.45 - 0.55
+- Overweight: 0.55 - 0.65
+- Obese: ≥ 0.65
+
+## Body Fat Percentage Categories
+
+### Male
+- Essential: < 3%
+- Athletic: 3% - 13%
+- Fitness: 13% - 17%
+- Average: 17% - 24%
+- Obese: ≥ 24%
+
+### Female
+- Essential: < 12%
+- Athletic: 12% - 20%
+- Fitness: 20% - 24%
+- Average: 24% - 31%
+- Obese: ≥ 31%
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
