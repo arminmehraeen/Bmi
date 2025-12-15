@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.0] - 2024-03-21
+## [1.0.0]
 
 ### Added
 - Body fat percentage calculation using the Deurenberg formula
@@ -24,7 +24,7 @@
 - Improved input validation
 - Enhanced error messages
 
-## [0.0.3] - 2023-05-04
+## [0.0.3]
 
 ### Added
 - Initial release with basic BMI calculation
